@@ -51,7 +51,6 @@ int main(int argc, char* const argv[])
     char cadenas[1024][256];
     double cantsecuencia = 0.0, refrencia = 0.0, cantoriginal = 0.0;
     FILE *file;
-
     //revisa y pone en un arreglo la informacion del archivo
     //de las cadenas de adn
     filename = "cadena.txt";
@@ -72,7 +71,7 @@ int main(int argc, char* const argv[])
         }
 
     }
-    cantoriginal = (strlen(cadena) - i) + 1;
+    cantoriginal = (strlen(cadena) - i);
     fclose(file);
 
     //Se agrega el nombre del archivo por medio de linea de commando
@@ -101,29 +100,30 @@ int main(int argc, char* const argv[])
     n = i;
     printf("\n\n");
     fclose(file);
-
     //Empieza programa en paralelo para leer y revisar las lineas
-    for(i = 0; i <= n; i++){
+    for(i = 0; i < n; i++){
         lineas[i][strlen(lineas[i]) - 1] = '\0';
-        printf("Linea %i: %s\n", i, lineas[i]);
+        // printf("Linea %i: %s\n", i, lineas[i]);
     }
+    lineas[i][strlen(lineas[n])] = '\0';
+    // printf("Linea %i: %s\n", n, lineas[n]);
     cadena[strlen(cadena)] = '\0';
     // printf("C: %c %li\n", cadena[367], strlen(cadena));
     
     int posiciones[n];
-    printf("%s\n\n", cadena);
+    // printf("%s\n\n", cadena);
     #pragma omp parallel shared(n)
         {
     #pragma omp for
-            for (i = 0; i < n; i++){
+            for (i = 0; i <= n; i++){
                 char *sequence = strchr(lineas[i], '\n');
                 if(sequence){
                     *sequence = '\0';
                 }
-                printf("Linea %i\n", i);
-                printf("Linea %s\n", lineas[i]);
+                // printf("Linea %i\n", i);
+                // printf("Linea %s\n", lineas[i]);
                 sequence = strstr(cadena, lineas[i]);
-                printf("S: %s", sequence);
+                // printf("S: %s", sequence);
                 if(sequence != NULL){
                     //Se busca las posiones de los que se econtraron en la cadena original
                     posiciones[i] = findPosicion(lineas[i]);
@@ -134,7 +134,7 @@ int main(int argc, char* const argv[])
         } /*-- End of parallel region --*/
 
     //Se imprime las posiones de las cadenas que se encontraron
-    for(i = 0, j = 0; i < n; ++i){
+    for(i = 0, j = 0; i <= n; i++){
         printf("\n");
         if(posiciones[i] != -1){
             j++;
@@ -147,12 +147,13 @@ int main(int argc, char* const argv[])
     }
     
     //Se obtiene el porcentaje de refrencia
+    // printf("SEC: %f ORG: %f\n", cantsecuencia, cantoriginal);
     refrencia = (cantsecuencia / cantoriginal) * 100;
 
     //Se manda los ultimos mensajes
     printf("\n El archivo cubre el %f del genoma de referencia", refrencia);
 
     printf("\n %d secuencias mapeadas", j);
-    printf("\n %d secuencias no mapeadas", n-j);
+    printf("\n %d secuencias no mapeadas\n", n-j+1);
     
 }
