@@ -37,7 +37,7 @@ int findPosicion(char secuencia[1024]){
 }
 
 
-int main(int argc, char* argv[])
+int main(int argc, char* const argv[])
 {
     //declaracion de todas las variables
     char *filename;
@@ -77,13 +77,17 @@ int main(int argc, char* argv[])
     fclose(file);
 
     //Empieza programa en paralelo para leer y revisar las lineas
-    char * sequence;
+    char *sequence;
     int posiciones[n];
+    printf("%s\n\n", cadena);
     #pragma omp parallel shared(n) private(i, sequence)
         {
     #pragma omp for
             for (i = 0; i < n; i++){
+                printf("Linea %i\n", i);
+                printf("Linea %s\n", lineas[i]);
                 sequence = strstr(cadena, lineas[i]);
+                printf("%s", sequence);
                 if(sequence != NULL){
                     //Se busca las posiones de los que se econtraron en la cadena original
                     posiciones[i] = findPosicion(lineas[i]);

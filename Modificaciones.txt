@@ -1,7 +1,8 @@
 Capturando Archivos
 Monitoreando
-/home/fernando/Documents/ProyectoFinal/test/pupu.seq
-LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/pupu.seq
+
+Capturando Archivos
+Monitoreando
 /home/fernando/Documents/ProyectoFinal/test/opcion/opcion2.seq
 LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/opcion/opcion2.seq
 /home/fernando/Documents/ProyectoFinal/test/opcion/opcion1.seq
