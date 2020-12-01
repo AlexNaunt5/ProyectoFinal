@@ -36,7 +36,6 @@ int findPosicion(char secuencia[1024]){
     }
 }
 
-
 int main(int argc, char* const argv[])
 {
     //declaracion de todas las variables
@@ -44,6 +43,10 @@ int main(int argc, char* const argv[])
     char linea[256];
     char linea2[256];
     int n, i, j;
+
+    int contador_archivo = 0;
+    char ch;
+
     char lineas[1024][256];
     char cadenas[1024][256];
     double cantsecuencia = 0.0, refrencia = 0.0, cantoriginal = 0.0;
@@ -54,10 +57,20 @@ int main(int argc, char* const argv[])
     filename = "cadena.txt";
     file = fopen(filename, "r");
     i = 0;
-    while (fgets(linea2, 256, file))
+    // while (fgets(linea2, 256, file))
+    // {
+    //     strcat(cadena, linea2);
+    //     i++;
+    // }
+    while((ch = fgetc(file)) != EOF)
     {
-        strcat(cadena, linea2);
-        i++;
+        if(ch == '\n' || ch == '\t' || ch == '\r'){
+
+        }else{
+            cadena[contador_archivo] = ch;
+            contador_archivo++;
+        }
+
     }
     cantoriginal = (strlen(cadena) - i) + 1;
     fclose(file);
@@ -67,27 +80,50 @@ int main(int argc, char* const argv[])
     n = 0;
     i = 0;
     file = fopen(filename, "r");
-    while (fgets(lineas[i], 256, file))
-    {
-        lineas[i][strlen(lineas[i]) - 1] = '\0';
-        i++;
+    // while (fgets(lineas[i], 256, file))
+    // {
+    //     lineas[i][strlen(lineas[i]) - 1] = '\0';
+    //     i++;
+    // }
+    contador_archivo = 0;
+    while((ch = fgetc(file)) != EOF){
+        if(ch == ' '){
+
+        }
+        else if(ch == '\n'){
+            i++;
+            contador_archivo = 0;
+        }else{
+            lineas[i][contador_archivo] = ch;
+            contador_archivo++;
+        }
     }
     n = i;
     printf("\n\n");
     fclose(file);
 
     //Empieza programa en paralelo para leer y revisar las lineas
-    char *sequence;
+    for(i = 0; i <= n; i++){
+        lineas[i][strlen(lineas[i]) - 1] = '\0';
+        printf("Linea %i: %s\n", i, lineas[i]);
+    }
+    cadena[strlen(cadena)] = '\0';
+    // printf("C: %c %li\n", cadena[367], strlen(cadena));
+    
     int posiciones[n];
     printf("%s\n\n", cadena);
-    #pragma omp parallel shared(n) private(i, sequence)
+    #pragma omp parallel shared(n)
         {
     #pragma omp for
             for (i = 0; i < n; i++){
+                char *sequence = strchr(lineas[i], '\n');
+                if(sequence){
+                    *sequence = '\0';
+                }
                 printf("Linea %i\n", i);
                 printf("Linea %s\n", lineas[i]);
                 sequence = strstr(cadena, lineas[i]);
-                printf("%s", sequence);
+                printf("S: %s", sequence);
                 if(sequence != NULL){
                     //Se busca las posiones de los que se econtraron en la cadena original
                     posiciones[i] = findPosicion(lineas[i]);
