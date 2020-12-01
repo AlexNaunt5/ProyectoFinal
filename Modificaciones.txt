@@ -1,8 +1,8 @@
 Capturando Archivos
 Monitoreando
-/home/fernando/Documents/ProyectoFinal/test/test.seq
-/home/fernando/Documents/ProyectoFinal/test/adios.seq
-/home/fernando/Documents/ProyectoFinal/test/hola.seq
-/home/fernando/Documents/ProyectoFinal/test/pruebas/prueba4.seq
-/home/fernando/Documents/ProyectoFinal/test/pruebas/prueba2.seq
+/home/fernando/Documents/ProyectoFinal/test/tuto.seq
+/home/fernando/Documents/ProyectoFinal/test/pupu.seq
+/home/fernando/Documents/ProyectoFinal/test/opcion/opcion2.seq
+/home/fernando/Documents/ProyectoFinal/test/opcion/opcion1.seq
+/home/fernando/Documents/ProyectoFinal/test/opcion/opcion4.seq
 /home/fernando/Documents/ProyectoFinal/test/pruebas/prueba1.seq

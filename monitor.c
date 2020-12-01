@@ -22,19 +22,24 @@ void listFiles(const char *path){
     struct dirent *dp;
     DIR *dir = opendir(path);
     int len = 0;
+    char new_path[100];
 
     if(!dir){
         return;
     }
     while ((dp = readdir(dir)) != NULL)
     {
+        memset(new_path, '\0', sizeof new_path);
         len = strlen(dp->d_name);
         if(strlen(dp->d_name) > 4){
             if(dp->d_name[len - 1] == 'q' && dp->d_name[len - 2] == 'e' && dp->d_name[len - 3] == 's' && dp->d_name[len - 4] == '.'){
                 printf("%s%s\n", path, dp->d_name);
+                strcat(new_path, path);
+                strcat(new_path, dp->d_name);
                 fp = fopen("Modificaciones.txt", "a+");
-                fprintf(fp,"%s%s\n", path, dp->d_name);
+                fprintf(fp,"%s\n", new_path);
                 fclose(fp);
+                memset(new_path, '\0', sizeof new_path);
             }
         }
     }
@@ -147,14 +152,18 @@ int main(){
                         strcat(new_path, event->name);
                         strcat(new_path, "/");
                         listFiles(new_path);
+                        memset(new_path, '\0', sizeof new_path);
 
                     }else{
                         len_temp = strlen(event->name);
                         if(event->name[len_temp-4] == '.' && event->name[len_temp-3] == 's' && event->name[len_temp-2] == 'e' && event->name[len_temp-1] == 'q'){
                             printf("File \"%s\" was created", event->name);
+                            strcat(new_path, PATH);
+                            strcat(new_path, event->name);
                             fp = fopen("Modificaciones.txt", "a+");
-                            fprintf(fp,"%s%s\n", PATH, event->name);
+                            fprintf(fp,"%s\n", new_path);
                             fclose(fp);
+                            memset(new_path, '\0', sizeof new_path);
                         }
                     }
                 }
