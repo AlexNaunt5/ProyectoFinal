@@ -10,6 +10,9 @@
 #include <dirent.h>
 #include <sys/inotify.h>
 
+#include <sys/socket.h>
+#include <netinet/in.h>
+
 #define MAX_EVENT_MONITOR 2048
 #define NAME_LEN 32
 #define MONITOR_EVENT_SIZE (sizeof(struct inotify_event))
@@ -18,7 +21,15 @@
 
 FILE *fp;
 
-void listFiles(const char *path){
+void enviar(char mensaje[100], int fd){
+    fp = fopen("Modificaciones.txt", "a+");
+    fprintf(fp,"LLAMADA AL SERVIDOR:%s\n", mensaje);
+    fclose(fp);
+    send(fd, mensaje, strlen(mensaje), 0);
+    sleep(10);
+}
+
+void listFiles(const char *path, int fdc){
     struct dirent *dp;
     DIR *dir = opendir(path);
     int len = 0;
@@ -39,6 +50,7 @@ void listFiles(const char *path){
                 fp = fopen("Modificaciones.txt", "a+");
                 fprintf(fp,"%s\n", new_path);
                 fclose(fp);
+                enviar(new_path, fdc);
                 memset(new_path, '\0', sizeof new_path);
             }
         }
@@ -93,6 +105,22 @@ int main(){
     printf("Starting daemonize\n");
     daemonize();
 
+    //Creaciond el Cliente para poder enviar mensajes al servidor
+    struct sockaddr_in serv;
+    int fdc;
+    int conn;
+    char message[100] = "";
+
+    fdc = socket(AF_INET, SOCK_STREAM, 0);
+    serv.sin_family = AF_INET;
+    serv.sin_port = htons(8096);
+
+    inet_pton(AF_INET, "127.0.0.1", &serv.sin_addr);
+
+    connect(fdc, (struct sockaddr *)&serv, sizeof(serv));
+
+
+    // Inicia el monitores de la carpeta
     fp = fopen("Modificaciones.txt", "a+");
     fprintf(fp,"Capturando Archivos\n");
     fclose(fp);
@@ -132,26 +160,13 @@ int main(){
         while(i < total_read){
             struct inotify_event *event = (struct inotify_event*)&buffer[i];
             if(event->len){
-                // if(event->mask & IN_CREATE){
-                //     if(event->mask & IN_ISDIR){
-                //         printf("Directory \"%s%s\" was created", PATH, event->name);
-                //     }else{
-                //         len_temp = strlen(event->name);
-                //         if(event->name[len_temp-4] == '.' && event->name[len_temp-3] == 's' && event->name[len_temp-2] == 'e' && event->name[len_temp-1] == 'q'){
-                //             printf("File \"%s%s\" was created", PATH, event->name);
-                //             fp = fopen("Modificaciones.txt", "a+");
-                //             fprintf(fp,"%s%s\n", PATH, event->name);
-                //             fclose(fp);
-                //         }
-                //     }
-                // }
                 if(event->mask & IN_MOVED_TO){
                     printf("IN MOVED TO");
                     if(event->mask & IN_ISDIR){
                         strcat(new_path, PATH);
                         strcat(new_path, event->name);
                         strcat(new_path, "/");
-                        listFiles(new_path);
+                        listFiles(new_path, fdc);
                         memset(new_path, '\0', sizeof new_path);
 
                     }else{
@@ -163,6 +178,7 @@ int main(){
                             fp = fopen("Modificaciones.txt", "a+");
                             fprintf(fp,"%s\n", new_path);
                             fclose(fp);
+                            enviar(new_path, fdc);
                             memset(new_path, '\0', sizeof new_path);
                         }
                     }
