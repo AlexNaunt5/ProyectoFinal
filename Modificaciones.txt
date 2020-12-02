@@ -1,11 +1,66 @@
 Capturando Archivos
 Monitoreando
-
+/home/fernando/Documents/ProyectoFinal/test/prueba.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/prueba.seq
+/home/fernando/Documents/ProyectoFinal/test/s_cerevisia.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/s_cerevisia.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/true.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/true.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/prueba.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/prueba.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/rompe.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/rompe.seq
 Capturando Archivos
 Monitoreando
-/home/fernando/Documents/ProyectoFinal/test/opcion/opcion2.seq
-LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/opcion/opcion2.seq
-/home/fernando/Documents/ProyectoFinal/test/opcion/opcion1.seq
-LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/opcion/opcion1.seq
-/home/fernando/Documents/ProyectoFinal/test/opcion/opcion4.seq
-LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/opcion/opcion4.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/true.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/true.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/prueba.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/prueba.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/rompe.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/rompe.seq
+Capturando Archivos
+Monitoreando
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/true.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/true.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/prueba.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/prueba.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/rompe.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/rompe.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/s_cerevisia.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/s_cerevisia.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/true.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/true.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/prueba.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/prueba.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/rompe.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/rompe.seq
+Capturando Archivos
+Monitoreando
+/home/fernando/Documents/ProyectoFinal/test/s_cerevisia.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/s_cerevisia.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/true.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/true.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/prueba.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/prueba.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/rompe.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/rompe.seq
+/home/fernando/Documents/ProyectoFinal/test/rompe.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/rompe.seq
+/home/fernando/Documents/ProyectoFinal/test/rompe2.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/rompe2.seq
+Capturando Archivos
+Monitoreando
+/home/fernando/Documents/ProyectoFinal/test/rompe2.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/rompe2.seq
+/home/fernando/Documents/ProyectoFinal/test/rompe.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/rompe.seq
+/home/fernando/Documents/ProyectoFinal/test/s_cerevisia.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/s_cerevisia.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/rompe2.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/rompe2.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/true.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/true.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/prueba.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/prueba.seq
+/home/fernando/Documents/ProyectoFinal/test/maspruebas/rompe.seq
+LLAMADA AL SERVIDOR:/home/fernando/Documents/ProyectoFinal/test/maspruebas/rompe.seq

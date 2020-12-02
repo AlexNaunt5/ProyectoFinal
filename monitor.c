@@ -26,7 +26,7 @@ void enviar(char mensaje[100], int fd){
     fprintf(fp,"LLAMADA AL SERVIDOR:%s\n", mensaje);
     fclose(fp);
     send(fd, mensaje, strlen(mensaje), 0);
-    sleep(0.01);
+    sleep(1);
 }
 
 void listFiles(const char *path, int fdc){
