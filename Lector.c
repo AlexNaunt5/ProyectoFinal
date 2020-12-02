@@ -5,7 +5,7 @@
 
 
 //Se obtiene la cadena original para revisar
-char cadena[1024];
+char cadena[12000000];
 
 /**
  * @brief Revisa las posiciones en donde se conuentra cada una
@@ -14,7 +14,7 @@ char cadena[1024];
  * @param secuencia 
  * @return int 
  */
-int findPosicion(char secuencia[1024]){
+int findPosicion(char secuencia[12000000]){
     int tamse = 0, tamca = 0, k, h;
     tamse = strlen(secuencia);
     tamca = strlen(cadena);
@@ -47,13 +47,13 @@ int main(int argc, char* const argv[])
     int contador_archivo = 0;
     char ch;
 
-    char lineas[1024][256];
-    char cadenas[1024][256];
+    char lineas[505][13000];
+    char cadenas[505][13000];
     double cantsecuencia = 0.0, refrencia = 0.0, cantoriginal = 0.0;
     FILE *file;
     //revisa y pone en un arreglo la informacion del archivo
     //de las cadenas de adn
-    filename = "cadena.txt";
+    filename = "cadena2.txt";
     file = fopen(filename, "r");
     i = 0;
     // while (fgets(linea2, 256, file))
@@ -98,6 +98,7 @@ int main(int argc, char* const argv[])
         }
     }
     n = i;
+    printf("N: %i\n", n);
     printf("\n\n");
     fclose(file);
     //Empieza programa en paralelo para leer y revisar las lineas
