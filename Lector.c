@@ -97,26 +97,38 @@ int main(int argc, char* const argv[])
             contador_archivo++;
         }
     }
-    n = i;
+    printf("I: %i\n", i);
+    printf("TAM: %li\n", strlen(lineas[i]));
+    if(strlen(lineas[i]) == 0){
+        n = i;
+        printf("S: %s\n", lineas[n-1]);
+        lineas[n-1][strlen(lineas[n-1]) - 1] = '\0';
+    }else
+    {
+        n = i + 1;
+        lineas[i][strlen(lineas[n-1])] = '\0';
+    }
     printf("N: %i\n", n);
     printf("\n\n");
     fclose(file);
     //Empieza programa en paralelo para leer y revisar las lineas
-    for(i = 0; i < n; i++){
+    for(i = 0; i < n-1; i++){
         lineas[i][strlen(lineas[i]) - 1] = '\0';
         // printf("Linea %i: %s\n", i, lineas[i]);
     }
-    lineas[i][strlen(lineas[n])] = '\0';
-    // printf("Linea %i: %s\n", n, lineas[n]);
     cadena[strlen(cadena)] = '\0';
     // printf("C: %c %li\n", cadena[367], strlen(cadena));
+    
+    for(i = 0; i < n; i++){
+        printf("Linea %i: %li\n", i, strlen(lineas[i]));
+    }
     
     int posiciones[n];
     // printf("%s\n\n", cadena);
     #pragma omp parallel shared(n)
         {
     #pragma omp for
-            for (i = 0; i <= n; i++){
+            for (i = 0; i < n; i++){
                 char *sequence = strchr(lineas[i], '\n');
                 if(sequence){
                     *sequence = '\0';
@@ -135,15 +147,19 @@ int main(int argc, char* const argv[])
         } /*-- End of parallel region --*/
 
     //Se imprime las posiones de las cadenas que se encontraron
-    for(i = 0, j = 0; i <= n; i++){
+    int mapeadas = 0;
+    int no_mapeadas = 0;
+    for(i = 0, j = 0; i < n; i++){
         printf("\n");
         if(posiciones[i] != -1){
             j++;
             cantsecuencia += strlen(lineas[i]);
             printf("%s a partir del carcater %d", lineas[i], posiciones[i]);
+            mapeadas++;
         }
         else{
             printf("%s no se econtro", lineas[i]);
+            no_mapeadas++;
         }
     }
     
@@ -154,7 +170,7 @@ int main(int argc, char* const argv[])
     //Se manda los ultimos mensajes
     printf("\n El archivo cubre el %f del genoma de referencia", refrencia);
 
-    printf("\n %d secuencias mapeadas", j);
-    printf("\n %d secuencias no mapeadas\n", n-j+1);
+    printf("\n %d secuencias mapeadas", mapeadas);
+    printf("\n %d secuencias no mapeadas\n", no_mapeadas);
     
 }
